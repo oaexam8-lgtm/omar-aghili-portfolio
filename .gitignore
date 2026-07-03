@@ -5,6 +5,11 @@
 *.swo
 *~
 
+# Personal files and notes
+GITHUB_SETUP.md
+OFFLINE_INFO.md
+UPLOAD_COMMANDS.bat
+
 # OS generated files
 .DS_Store
 .DS_Store?
