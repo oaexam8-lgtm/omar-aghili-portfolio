@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oaexam8-lgtm.github.io/sitemap.xml
