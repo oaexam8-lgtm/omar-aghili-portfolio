@@ -40,30 +40,30 @@
        url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZ9hiA.woff2') format('woff2');
 }
 
-/* Vazirmatn - Persian Font */
+/* Estedad - Persian Font (Local) */
 @font-face {
-  font-family: 'Vazirmatn';
+  font-family: 'Estedad';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Vazirmatn Light'), local('Vazirmatn-Light'),
-       url('https://fonts.gstatic.com/s/vazirmatn/v13/Dxx78j6PP2D_kU2muijPEe1n2vVbfJRklWgyOReZ72DF_QY.woff2') format('woff2');
+  src: local('Estedad Light'), local('Estedad-Light'),
+       url('Estedad-Light.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Vazirmatn';
+  font-family: 'Estedad';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Vazirmatn Regular'), local('Vazirmatn-Regular'),
-       url('https://fonts.gstatic.com/s/vazirmatn/v13/Dxx78j6PP2D_kU2muijPEe1n2vVbfJRklWgyOReZ72DF_QY.woff2') format('woff2');
+  src: local('Estedad Regular'), local('Estedad-Regular'),
+       url('Estedad-Regular.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Vazirmatn';
+  font-family: 'Estedad';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Vazirmatn Bold'), local('Vazirmatn-Bold'),
-       url('https://fonts.gstatic.com/s/vazirmatn/v13/Dxx78j6PP2D_kU2muijPEe1n2vVbfJRklWgyOReZ72DF_QY.woff2') format('woff2');
+  src: local('Estedad Bold'), local('Estedad-Bold'),
+       url('Estedad-Bold.woff2') format('woff2');
 }

@@ -55,7 +55,18 @@ body {
 }
 
 html.fa-mode body {
-  font-family: "Vazirmatn", sans-serif;
+  font-family: "Estedad", sans-serif;
+}
+
+/* Special font for "Omar Aghili" name only */
+html.fa-mode .hero-name,
+html.fa-mode .footer-logo {
+  font-family: "Estedad", sans-serif !important;
+}
+
+/* Larger size for Persian name */
+html.fa-mode .hero-name {
+  font-size: clamp(2.5rem, 9vw, 5.2rem);
 }
 
 a,
@@ -71,16 +82,27 @@ textarea {
 }
 
 ::-webkit-scrollbar {
+  width: 6px;
+  transition: width 0.3s ease;
+}
+
+::-webkit-scrollbar:hover {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: color-mix(in oklab, var(--bg-secondary) 50%, transparent);
+  border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: color-mix(in oklab, var(--accent) 40%, transparent);
   border-radius: var(--radius-full);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
 .container {
@@ -137,13 +159,21 @@ textarea {
   color: inherit !important;
 }
 
+/* Mobile logo size */
+@media (max-width: 768px) {
+  .logo-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 .nav-links {
   list-style: none;
   margin: 0;
   padding: 0;
   display: none;
   align-items: center;
-  gap: 0.9rem;
+  gap: 2rem;
 }
 
 .nav-link,
@@ -207,7 +237,7 @@ textarea {
   border-radius: var(--radius-md);
   white-space: nowrap;
   font-weight: 600;
-  font-family: "Vazirmatn", "Inter", sans-serif !important;
+  font-family: "Estedad", "Inter", sans-serif !important;
   letter-spacing: 0.02em;
   font-size: 0.95rem;
 }
@@ -475,10 +505,13 @@ main {
 .hero-name {
   margin: 0;
   font-size: clamp(2.1rem, 8vw, 4.5rem);
-  line-height: 1.1;
+  line-height: 1.2;
   background: var(--gradient);
   color: transparent;
   background-clip: text;
+  -webkit-background-clip: text;
+  padding-bottom: 0.15em;
+  overflow: visible;
 }
 
 .hero-role {
@@ -624,6 +657,13 @@ main {
   bottom: 23%; 
   left: 16%; 
   animation-delay: 4s; 
+}
+
+/* 📱 Hide floating snippets on mobile and tablet for cleaner layout */
+@media (max-width: 1024px) {
+  .floating-snippets {
+    display: none;
+  }
 }
 
 @keyframes drift {
@@ -820,44 +860,29 @@ main {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .skill-card {
   --skill-color: var(--accent);
-  padding: 1rem;
+  padding: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .skill-card i {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .skill-card h3 {
-  margin: 0.7rem 0;
-}
-
-.progress-track {
-  width: 100%;
-  height: 10px;
-  border-radius: var(--radius-full);
-  background: color-mix(in oklab, var(--bg-secondary) 90%, #000 10%);
-  overflow: hidden;
-}
-
-.skill-progress {
-  height: 100%;
-  width: 0;
-  border-radius: inherit;
-  background: var(--gradient);
-  transition: width 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.progress-label {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  margin: 0;
+  font-size: 1rem;
 }
 
 /* 🎯 Enhanced Hover Effects */
@@ -1180,6 +1205,281 @@ main {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+/* 🖼️ Gallery Trigger Button on Project Card */
+.gallery-trigger {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: color-mix(in oklab, var(--bg-card) 80%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 1rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.project-card:hover .gallery-trigger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-trigger:hover {
+  background: var(--gradient);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+.gallery-trigger i {
+  font-size: 1rem;
+}
+
+/* 🎨 Image Gallery Modal - Carousel/Coverflow Style */
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.gallery-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gallery-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.gallery-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5vh;
+  gap: 2rem;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.gallery-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: color-mix(in oklab, var(--bg-card) 70%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.gallery-close:hover {
+  background: #ff5d73;
+  border-color: #ff5d73;
+  color: #fff;
+  transform: rotate(90deg) scale(1.1);
+}
+
+.gallery-carousel {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.gallery-track-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-slide {
+  position: absolute;
+  width: 500px;
+  max-width: 80vw;
+  height: auto;
+  max-height: 60vh;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  transition: all 0.6s ease;
+  background: color-mix(in oklab, var(--bg-card) 50%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in oklab, var(--border) 40%, transparent);
+}
+
+/* Adjust mobile/portrait images to be smaller and fully visible */
+.gallery-slide img[alt*="mobile" i],
+.gallery-slide img[alt*="موبایل" i] {
+  max-height: 70vh;
+  width: auto;
+  object-fit: contain;
+  margin: auto;
+}
+
+/* Center slide - Active */
+.gallery-slide.active {
+  z-index: 3;
+  transform: translateX(0) scale(1) rotateY(0deg);
+  opacity: 1;
+}
+
+.gallery-slide.active img {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  border-color: var(--accent);
+}
+
+/* Left slide */
+.gallery-slide.prev {
+  z-index: 2;
+  transform: translateX(-60%) scale(0.75) rotateY(20deg);
+  opacity: 0.5;
+}
+
+/* Right slide */
+.gallery-slide.next {
+  z-index: 2;
+  transform: translateX(60%) scale(0.75) rotateY(-20deg);
+  opacity: 0.5;
+}
+
+/* Hidden slides */
+.gallery-slide.hidden {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0) scale(0.5);
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 968px) {
+  .gallery-slide {
+    width: 400px;
+  }
+
+  .gallery-slide.prev {
+    transform: translateX(-50%) scale(0.7) rotateY(15deg);
+  }
+
+  .gallery-slide.next {
+    transform: translateX(50%) scale(0.7) rotateY(-15deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-trigger {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 0.75rem;
+    padding: 0.5rem 0.8rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .gallery-trigger span {
+    display: none;
+  }
+
+  .gallery-close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .gallery-slide {
+    width: 320px;
+  }
+
+  .gallery-slide.prev {
+    transform: translateX(-70%) scale(0.6) rotateY(25deg);
+    opacity: 0.3;
+  }
+
+  .gallery-slide.next {
+    transform: translateX(70%) scale(0.6) rotateY(-25deg);
+    opacity: 0.3;
+  }
+
+  .gallery-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-slide {
+    width: 280px;
+  }
+
+  .gallery-slide.prev,
+  .gallery-slide.next {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 /* 🎬 Advanced Reveal Animations */

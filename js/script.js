@@ -82,27 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
         particle.draw();
       });
 
-      // Connect nearby particles with lines - responsive distance
-      const isMobile = canvas.width < 768;
-      const maxDistance = isMobile ? 80 : 120;
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < maxDistance) {
-            ctx.strokeStyle = `rgba(108, 99, 255, ${0.1 * (1 - distance / maxDistance)})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
       animationId = requestAnimationFrame(animateParticles);
     }
 
@@ -117,8 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const typingPhrases = {
-    en: ["Web Developer", "Frontend Developer", "UI Enthusiast"],
-    fa: ["توسعه دهنده وب", "برنامه نویس فرانت اند"]
+    en: ["Frontend Web Developer"],
+    fa: ["توسعه دهنده فرانت اند وب"]
   };
 
   let currentLanguage = localStorage.getItem("language") || "en";
@@ -261,27 +240,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const skillsSection = document.getElementById("skills");
-  const skillBars = document.querySelectorAll(".skill-progress");
   document.querySelectorAll(".skill-card").forEach((card) => {
     const color = card.dataset.color || "#6c63ff";
     card.style.setProperty("--skill-color", color);
     const icon = card.querySelector("i");
     if (icon) icon.style.color = color;
   });
-
-  let skillsAnimated = false;
-  const skillsObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !skillsAnimated) {
-        skillBars.forEach((bar) => {
-          bar.style.width = `${bar.dataset.progress}%`;
-        });
-        skillsAnimated = true;
-        skillsObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.35 });
-  skillsObserver.observe(skillsSection);
 
   // Sync active state between desktop and mobile nav links while scrolling.
   const sections = [...document.querySelectorAll("main section[id]")];
@@ -366,4 +330,149 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTheme(currentTheme);
   applyLanguage(currentLanguage);
+
+  // 🖼️ Image Gallery Carousel Functionality
+  const galleryModal = document.getElementById("galleryModal");
+  const galleryTrack = document.getElementById("galleryTrack");
+  const galleryClose = document.querySelector(".gallery-close");
+  const galleryBackdrop = document.querySelector(".gallery-backdrop");
+
+  let currentGalleryImages = [];
+  let currentGalleryIndex = 0;
+
+  function openGallery(images, startIndex = 0) {
+    currentGalleryImages = images;
+    currentGalleryIndex = startIndex;
+    
+    // Create slides
+    galleryTrack.innerHTML = "";
+    images.forEach((imageData, index) => {
+      const slide = document.createElement("div");
+      slide.className = "gallery-slide";
+      
+      const img = document.createElement("img");
+      img.src = imageData.src;
+      img.alt = imageData.alt;
+      img.loading = "lazy";
+      
+      slide.appendChild(img);
+      slide.addEventListener("click", () => {
+        if (index !== currentGalleryIndex) {
+          showGalleryImage(index);
+        }
+      });
+      
+      galleryTrack.appendChild(slide);
+    });
+
+    updateGallerySlides();
+    galleryModal.classList.add("active");
+    galleryModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeGallery() {
+    galleryModal.classList.remove("active");
+    galleryModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    currentGalleryImages = [];
+  }
+
+  function showGalleryImage(index) {
+    if (index < 0 || index >= currentGalleryImages.length) return;
+    currentGalleryIndex = index;
+    updateGallerySlides();
+  }
+
+  function updateGallerySlides() {
+    const slides = galleryTrack.querySelectorAll(".gallery-slide");
+
+    slides.forEach((slide, index) => {
+      slide.classList.remove("active", "prev", "next", "hidden");
+      
+      if (index === currentGalleryIndex) {
+        slide.classList.add("active");
+      } else if (index === currentGalleryIndex - 1 || 
+                 (currentGalleryIndex === 0 && index === slides.length - 1)) {
+        slide.classList.add("prev");
+      } else if (index === currentGalleryIndex + 1 || 
+                 (currentGalleryIndex === slides.length - 1 && index === 0)) {
+        slide.classList.add("next");
+      } else {
+        slide.classList.add("hidden");
+      }
+    });
+  }
+
+  function nextImage() {
+    const newIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
+    showGalleryImage(newIndex);
+  }
+
+  function prevImage() {
+    const newIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+    showGalleryImage(newIndex);
+  }
+
+  // Event listeners for gallery
+  galleryClose.addEventListener("click", closeGallery);
+  galleryBackdrop.addEventListener("click", closeGallery);
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!galleryModal.classList.contains("active")) return;
+    
+    if (e.key === "Escape") closeGallery();
+    else if (e.key === "ArrowLeft") prevImage();
+    else if (e.key === "ArrowRight") nextImage();
+  });
+
+  // Setup gallery triggers for project cards
+  document.querySelectorAll(".gallery-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const projectCard = trigger.closest(".project-card");
+      const galleryData = projectCard.querySelector(".gallery-data");
+      
+      if (!galleryData) return;
+      
+      const images = Array.from(galleryData.querySelectorAll("img")).map((img) => ({
+        src: img.dataset.src,
+        alt: img.alt,
+        caption: currentLanguage === "fa" ? img.dataset.captionFa : img.dataset.captionEn
+      }));
+      
+      if (images.length > 0) {
+        openGallery(images, 0);
+      }
+    });
+  });
+
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  galleryModal.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  galleryModal.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        nextImage(); // Swipe left
+      } else {
+        prevImage(); // Swipe right
+      }
+    }
+  }
 });
