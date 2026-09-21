@@ -109,7 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setTheme(theme) {
     html.setAttribute("data-theme", theme);
-    themeIcon.className = theme === "dark" ? "fa-solid fa-moon" : "fa-solid fa-sun";
+    const themeIcon = document.getElementById("themeIcon");
+    const useElement = themeIcon.querySelector("use");
+    useElement.setAttribute("href", theme === "dark" ? "#icon-moon" : "#icon-sun");
     localStorage.setItem("theme", theme);
     currentTheme = theme;
   }
@@ -243,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".skill-card").forEach((card) => {
     const color = card.dataset.color || "#6c63ff";
     card.style.setProperty("--skill-color", color);
-    const icon = card.querySelector("i");
+    const icon = card.querySelector(".icon");
     if (icon) icon.style.color = color;
   });
 

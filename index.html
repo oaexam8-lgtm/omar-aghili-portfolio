@@ -14,16 +14,38 @@
   <meta property="og:image" content="https://oaexam8-lgtm.github.io/omar-aghili-portfolio/images/image-avatar/image-avatar.webp">
   <link rel="canonical" href="https://oaexam8-lgtm.github.io/omar-aghili-portfolio">
   <link rel="icon" type="image/webp" href="./images/image-logo/image-logo.webp">
-  <!-- Font Awesome - Latest Version -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <!-- Local Fonts -->
   <link rel="stylesheet" href="assets/fonts/fonts.css">
+  
+  <!-- Icon Styles -->
+  <link rel="stylesheet" href="css/icons.css">
   
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- SVG Icon Sprites -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-moon" viewBox="0 0 512 512"><path d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 512 512"><path d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109.6-19.89l-19.89-109.6c-1.975-10.93-14.59-16.16-23.72-9.826L255.1 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.826L121.6 121.6L11.97 141.5c-10.93 1.977-16.16 14.59-9.826 23.72l63.15 91.01L1.769 347c-6.332 9.125-1.105 21.74 9.826 23.72l109.6 19.89l19.89 109.6c1.975 10.93 14.59 16.16 23.72 9.826l91.01-63.15l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.826l19.89-109.6l109.6-19.89C510.4 368.8 515.6 356.1 509.3 347z"/></symbol>
+    <symbol id="icon-bars" viewBox="0 0 448 512"><path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 448 512"><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></symbol>
+    <symbol id="icon-html5" viewBox="0 0 384 512"><path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/></symbol>
+    <symbol id="icon-css3-alt" viewBox="0 0 384 512"><path d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm313.1 80l-4.8 47.3L193 208.6l-.3.1h111.5l-12.8 146.6-98.2 28.7-98.8-29.2-6.4-73.9h48.9l3.2 38.3 52.6 13.3 54.7-15.4 3.7-61.6-166.3-.5v-.1l-.2.1-3.6-46.3L193.1 162l6.5-2.7H76.7L70.9 112h242.2z"/></symbol>
+    <symbol id="icon-js" viewBox="0 0 448 512"><path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/></symbol>
+    <symbol id="icon-git-alt" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></symbol>
+    <symbol id="icon-github" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></symbol>
+    <symbol id="icon-mobile-alt" viewBox="0 0 320 512"><path d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"/></symbol>
+    <symbol id="icon-brain" viewBox="0 0 512 512"><path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z"/></symbol>
+    <symbol id="icon-images" viewBox="0 0 576 512"><path d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z"/></symbol>
+    <symbol id="icon-external-link-alt" viewBox="0 0 512 512"><path d="M384 320c-17.67 0-32 14.33-32 32v96H64V160h96c17.67 0 32-14.32 32-32s-14.33-32-32-32L64 96c-35.35 0-64 28.65-64 64V448c0 35.34 28.65 64 64 64h288c35.35 0 64-28.66 64-64v-96C416 334.3 401.7 320 384 320zM488 0H352c-12.94 0-24.62 7.797-29.56 19.75c-4.969 11.97-2.219 25.72 6.938 34.88L370.8 96L169.4 297.4c-12.5 12.5-12.5 32.75 0 45.25C175.6 348.9 183.8 352 192 352s16.38-3.125 22.62-9.375L416 141.3l41.38 41.38c9.156 9.141 22.88 11.84 34.88 6.938C504.2 184.6 512 172.9 512 160V24C512 10.74 501.3 0 488 0z"/></symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></symbol>
+    <symbol id="icon-envelope" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 384 512"><path d="M374.6 246.6C368.4 252.9 360.2 256 352 256s-16.38-3.125-22.62-9.375L224 141.3V448c0 17.69-14.33 31.1-31.1 31.1S160 465.7 160 448V141.3L54.63 246.6c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160C387.1 213.9 387.1 234.1 374.6 246.6z"/></symbol>
+    <symbol id="icon-xmark" viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></symbol>
+  </svg>
+  
   <header class="site-header" id="top">
     <nav class="navbar container" aria-label="Main navigation">
       <a href="#hero" class="logo" aria-label="Omar Aghili home">
@@ -40,11 +62,11 @@
 
       <div class="nav-actions">
         <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme">
-          <i id="themeIcon" class="fa-solid fa-moon"></i>
+          <svg class="icon" id="themeIcon"><use href="#icon-moon"></use></svg>
         </button>
         <button id="langToggle" class="lang-btn" type="button" aria-label="Toggle language" data-en="EN | فا" data-fa="فا | EN">EN | فا</button>
         <button id="mobileMenuToggle" class="icon-btn mobile-menu-toggle" type="button" aria-label="Open menu">
-          <i class="fa-solid fa-bars"></i>
+          <svg class="icon"><use href="#icon-bars"></use></svg>
         </button>
       </div>
     </nav>
@@ -83,7 +105,7 @@
       </div>
       <a href="#about" class="scroll-indicator" aria-label="Scroll down">
         <span data-en="Scroll" data-fa="اسکرول">Scroll</span>
-        <i class="fa-solid fa-chevron-down"></i>
+        <svg class="icon"><use href="#icon-chevron-down"></use></svg>
       </a>
     </section>
 
@@ -121,31 +143,31 @@
         <h2 class="section-title with-line" data-en="Skills" data-fa="مهارت ها">Skills</h2>
         <div class="skills-grid">
           <article class="skill-card stagger-item reveal" data-color="#e34f26">
-            <i class="fa-brands fa-html5"></i>
+            <svg class="icon icon-2xl"><use href="#icon-html5"></use></svg>
             <h3 data-en="HTML5" data-fa="HTML5">HTML5</h3>
           </article>
           <article class="skill-card stagger-item reveal" data-color="#1572b6">
-            <i class="fa-brands fa-css3-alt"></i>
+            <svg class="icon icon-2xl"><use href="#icon-css3-alt"></use></svg>
             <h3 data-en="CSS3" data-fa="CSS3">CSS3</h3>
           </article>
           <article class="skill-card stagger-item reveal" data-color="#f7df1e">
-            <i class="fa-brands fa-js"></i>
+            <svg class="icon icon-2xl"><use href="#icon-js"></use></svg>
             <h3 data-en="JavaScript" data-fa="JavaScript">JavaScript</h3>
           </article>
           <article class="skill-card stagger-item reveal" data-color="#f1502f">
-            <i class="fa-brands fa-git-alt"></i>
+            <svg class="icon icon-2xl"><use href="#icon-git-alt"></use></svg>
             <h3 data-en="Git" data-fa="Git">Git</h3>
           </article>
           <article class="skill-card stagger-item reveal" data-color="#8b5cf6">
-            <i class="fa-brands fa-github"></i>
+            <svg class="icon icon-2xl"><use href="#icon-github"></use></svg>
             <h3 data-en="GitHub" data-fa="GitHub">GitHub</h3>
           </article>
           <article class="skill-card stagger-item reveal" data-color="#22c55e">
-            <i class="fa-solid fa-mobile-alt"></i>
+            <svg class="icon icon-2xl"><use href="#icon-mobile-alt"></use></svg>
             <h3 data-en="Responsive Design" data-fa="طراحی واکنش گرا">Responsive Design</h3>
           </article>
           <article class="skill-card stagger-item reveal" data-color="#00d4ff">
-            <i class="fa-solid fa-brain"></i>
+            <svg class="icon icon-2xl"><use href="#icon-brain"></use></svg>
             <h3 data-en="AI" data-fa="هوش مصنوعی">AI</h3>
           </article>
         </div>
@@ -160,7 +182,7 @@
             <div class="project-media" style="--project-gradient: linear-gradient(135deg, #d4af37, #8b7355);">
               <img src="./images/images-projects/darolquran-1-hero.webp" alt="Dar Al Quran Website screenshot" class="project-thumb" loading="lazy">
               <button class="gallery-trigger" aria-label="View gallery">
-                <i class="fa-solid fa-images"></i>
+                <svg class="icon"><use href="#icon-images"></use></svg>
                 <span data-en="View Gallery (3 images)" data-fa="مشاهده گالری (3 تصویر)">View Gallery (3 images)</span>
               </button>
             </div>
@@ -173,8 +195,8 @@
                 <span class="tag" data-en="JavaScript" data-fa="JavaScript">JavaScript</span>
               </div>
               <div class="project-actions">
-                <a href="https://github.com/oaexam8-lgtm/dar-al-quran-haj-molla-ali-aghili-kusheh" target="_blank" rel="noopener noreferrer" aria-label="GitHub project"><i class="fa-brands fa-github"></i></a>
-                <a href="https://oaexam8-lgtm.github.io/dar-al-quran-haj-molla-ali-aghili-kusheh/" target="_blank" rel="noopener noreferrer" aria-label="Live demo"><i class="fa-solid fa-external-link-alt"></i></a>
+                <a href="https://github.com/oaexam8-lgtm/dar-al-quran-haj-molla-ali-aghili-kusheh" target="_blank" rel="noopener noreferrer" aria-label="GitHub project"><svg class="icon"><use href="#icon-github"></use></svg></a>
+                <a href="https://oaexam8-lgtm.github.io/dar-al-quran-haj-molla-ali-aghili-kusheh/" target="_blank" rel="noopener noreferrer" aria-label="Live demo"><svg class="icon"><use href="#icon-external-link-alt"></use></svg></a>
               </div>
             </div>
             <!-- Hidden gallery data -->
@@ -196,9 +218,9 @@
         <p class="contact-subtitle" data-en="Let's build something meaningful together." data-fa="بیایید با هم چیزی ارزشمند بسازیم.">Let's build something meaningful together.</p>
 
         <div class="contact-icons">
-          <a class="contact-icon" href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a class="contact-icon" href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a class="contact-icon" href="mailto:o.a.exam8@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a class="contact-icon" href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon icon-xl"><use href="#icon-github"></use></svg></a>
+          <a class="contact-icon" href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon icon-xl"><use href="#icon-linkedin"></use></svg></a>
+          <a class="contact-icon" href="mailto:o.a.exam8@gmail.com" aria-label="Email"><svg class="icon icon-xl"><use href="#icon-envelope"></use></svg></a>
         </div>
 
         <form id="contactForm" class="contact-form" novalidate>
@@ -228,16 +250,16 @@
       <p class="footer-logo" data-en="Omar Aghili" data-fa="عمر عقیلی">Omar Aghili</p>
       <p data-en="© 2025 Omar Aghili. All rights reserved." data-fa="© ۱۴۰۴ عمر عقیلی. تمامی حقوق محفوظ است.">© 2025 Omar Aghili. All rights reserved.</p>
       <div class="footer-socials">
-        <a href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="mailto:o.a.exam8@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon"><use href="#icon-github"></use></svg></a>
+        <a href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#icon-linkedin"></use></svg></a>
+        <a href="mailto:o.a.exam8@gmail.com" aria-label="Email"><svg class="icon"><use href="#icon-envelope"></use></svg></a>
       </div>
       <p data-en="Built with ❤️ using HTML, CSS & JS" data-fa="ساخته شده با ❤️ با HTML، CSS و JS">Built with ❤️ using HTML, CSS & JS</p>
     </div>
   </footer>
 
   <button id="scrollTopBtn" class="scroll-top-btn" type="button" aria-label="Scroll to top">
-    <i class="fa-solid fa-arrow-up"></i>
+    <svg class="icon"><use href="#icon-arrow-up"></use></svg>
   </button>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -247,7 +269,7 @@
     <div class="gallery-backdrop"></div>
     <div class="gallery-container">
       <button class="gallery-close" aria-label="Close gallery">
-        <i class="fa-solid fa-xmark"></i>
+        <svg class="icon icon-xl"><use href="#icon-xmark"></use></svg>
       </button>
       
       <div class="gallery-carousel">

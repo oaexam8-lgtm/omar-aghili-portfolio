@@ -1,0 +1,36 @@
+/* 🎨 SVG Icon Styles - Lightweight replacement for Font Awesome */
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  transition: all 0.3s ease;
+}
+
+/* Icon size variants */
+.icon-sm {
+  width: 0.875em;
+  height: 0.875em;
+}
+
+.icon-lg {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.icon-xl {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.icon-2xl {
+  width: 2em;
+  height: 2em;
+}
+
+/* Ensure icons inherit color from parent */
+.icon path {
+  fill: inherit;
+}
