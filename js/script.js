@@ -12,12 +12,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const toast = document.getElementById("toast");
   const navHeight = 72;
 
-  // ✨ Particles Animation for Hero Background
+  // ✨ Particles Animation for Hero Background (Desktop Only)
   const canvas = document.getElementById("particlesCanvas");
   if (canvas) {
     const ctx = canvas.getContext("2d");
     let particles = [];
     let animationId;
+    let isAnimating = false;
+
+    // بررسی اینکه آیا دستگاه دسکتاپ است یا نه
+    function isDesktop() {
+      return window.innerWidth >= 1024;
+    }
 
     function resizeCanvas() {
       canvas.width = canvas.offsetWidth;
@@ -45,9 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       draw() {
-        const isMobile = canvas.width < 768;
-        const baseOpacity = isMobile ? 0.15 : 0.25;
-        ctx.fillStyle = `rgba(108, 99, 255, ${this.opacity * baseOpacity})`;
+        ctx.fillStyle = `rgba(108, 99, 255, ${this.opacity * 0.25})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -56,18 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function initParticles() {
       particles = [];
-      const width = canvas.width;
-      const isMobile = width < 768;
-      const isTablet = width >= 768 && width < 1024;
+      if (!isDesktop()) return; // موبایل/تبلت: هیچ ذره‌ای ایجاد نمی‌شود
       
-      let particleCount;
-      if (isMobile) {
-        particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 25000), 30);
-      } else if (isTablet) {
-        particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 20000), 50);
-      } else {
-        particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 80);
-      }
+      const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 80);
       
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
@@ -75,6 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function animateParticles() {
+      if (!isAnimating) return;
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       particles.forEach((particle) => {
@@ -85,13 +82,60 @@ document.addEventListener("DOMContentLoaded", () => {
       animationId = requestAnimationFrame(animateParticles);
     }
 
+    function startAnimation() {
+      if (!isDesktop() || isAnimating) return;
+      isAnimating = true;
+      animateParticles();
+    }
+
+    function stopAnimation() {
+      isAnimating = false;
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    }
+
+    // IntersectionObserver برای فعال/غیرفعال کردن انیمیشن
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && isDesktop()) {
+            startAnimation();
+          } else {
+            stopAnimation();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      heroObserver.observe(heroSection);
+    }
+
+    // راه‌اندازی اولیه
     resizeCanvas();
     initParticles();
-    animateParticles();
+    if (isDesktop()) {
+      startAnimation();
+    }
 
+    // مدیریت تغییر سایز پنجره
     window.addEventListener("resize", () => {
+      const wasDesktop = particles.length > 0;
+      const nowDesktop = isDesktop();
+      
       resizeCanvas();
-      initParticles();
+      
+      // اگر از موبایل به دسکتاپ یا بالعکس تغییر کرد
+      if (wasDesktop !== nowDesktop) {
+        stopAnimation();
+        initParticles();
+        if (nowDesktop) {
+          startAnimation();
+        }
+      } else if (nowDesktop) {
+        // فقط در دسکتاپ، ذرات را دوباره مقداردهی کن
+        initParticles();
+      }
     });
   }
 

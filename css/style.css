@@ -384,6 +384,13 @@ main {
   opacity: 0.5;
 }
 
+/* 📱 موبایل و تبلت: Canvas را مخفی کن (بهینه‌سازی عملکرد) */
+@media (max-width: 1023px) {
+  .particles-canvas {
+    display: none;
+  }
+}
+
 .hero-bg::before,
 .hero-bg::after {
   content: "";
