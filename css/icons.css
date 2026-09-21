@@ -5,6 +5,7 @@
   width: 1em;
   height: 1em;
   fill: currentColor;
+  stroke: currentColor;
   vertical-align: -0.125em;
   transition: all 0.3s ease;
 }
@@ -31,6 +32,9 @@
 }
 
 /* Ensure icons inherit color from parent */
-.icon path {
+.icon path,
+.icon circle,
+.icon line {
   fill: inherit;
+  stroke: inherit;
 }
