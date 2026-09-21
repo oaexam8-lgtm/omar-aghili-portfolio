@@ -16,6 +16,12 @@
   --shadow-hover: 0 8px 40px var(--accent-glow), 0 2px 8px rgba(0, 0, 0, 0.3);
   --container: min(1120px, 92%);
   --nav-height: 72px;
+  
+  /* 🎨 Backdrop filter - responsive values */
+  --blur-none: none;
+  --blur-sm: blur(8px);
+  --blur-md: blur(10px);
+  --blur-lg: blur(20px);
 }
 
 [data-theme="light"] {
@@ -1844,5 +1850,121 @@ main {
 
   .projects-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ========================================
+   🚀 Performance Optimizations
+   ======================================== */
+
+/* 📱 Mobile (< 768px): حذف کامل backdrop-filter برای عملکرد بهتر */
+@media (max-width: 767px) {
+  .navbar,
+  .mobile-menu,
+  .icon-btn,
+  .lang-btn,
+  .btn-outline,
+  .scroll-indicator,
+  .floating-snippets span,
+  .about-text,
+  .stat-item,
+  .skill-card,
+  .project-card,
+  .contact-icon,
+  .contact-form,
+  .tag,
+  .project-actions a,
+  .field-group input,
+  .field-group textarea,
+  .site-footer,
+  .scroll-top-btn,
+  .toast,
+  .gallery-trigger,
+  .gallery-backdrop,
+  .gallery-close {
+    backdrop-filter: none !important;
+    background: color-mix(in oklab, var(--bg-card) 90%, transparent);
+  }
+  
+  /* افزایش opacity برای خوانایی بهتر بدون blur */
+  .navbar,
+  .mobile-menu {
+    background: color-mix(in oklab, var(--bg-secondary) 95%, transparent);
+  }
+  
+  .site-footer {
+    background: color-mix(in oklab, var(--bg-secondary) 98%, transparent);
+  }
+}
+
+/* 📱 Tablet (768px - 1023px): blur کم */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar,
+  .mobile-menu,
+  .about-text,
+  .site-footer,
+  .toast {
+    backdrop-filter: blur(10px) saturate(150%);
+  }
+  
+  .icon-btn,
+  .lang-btn,
+  .scroll-indicator,
+  .floating-snippets span,
+  .stat-item,
+  .skill-card,
+  .project-card,
+  .contact-icon,
+  .contact-form,
+  .tag,
+  .project-actions a,
+  .scroll-top-btn,
+  .gallery-trigger,
+  .gallery-close {
+    backdrop-filter: blur(8px);
+  }
+  
+  .btn-outline,
+  .field-group input,
+  .field-group textarea {
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* 💻 Desktop (≥ 1024px): full blur effect */
+@media (min-width: 1024px) {
+  /* عناصر اصلی با blur کامل */
+  .navbar,
+  .mobile-menu,
+  .about-text,
+  .site-footer,
+  .toast {
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+  
+  /* عناصر کوچک با blur متوسط */
+  .icon-btn,
+  .lang-btn,
+  .btn-outline,
+  .scroll-indicator,
+  .floating-snippets span,
+  .stat-item,
+  .skill-card,
+  .project-card,
+  .contact-icon,
+  .contact-form,
+  .scroll-top-btn,
+  .gallery-trigger,
+  .gallery-close {
+    backdrop-filter: blur(10px) saturate(180%);
+  }
+  
+  /* عناصر بسیار کوچک با blur کم */
+  .tag,
+  .project-actions a,
+  .field-group input,
+  .field-group textarea {
+    backdrop-filter: blur(8px);
   }
 }
