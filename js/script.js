@@ -377,6 +377,36 @@ document.addEventListener("DOMContentLoaded", () => {
   setTheme(currentTheme);
   applyLanguage(currentLanguage);
 
+  // 📋 Copy to clipboard functionality
+  document.querySelectorAll('.copyable').forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const textToCopy = button.dataset.copy;
+      
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        
+        // Visual feedback
+        button.classList.add('copied');
+        const originalContent = button.innerHTML;
+        const iconHtml = button.querySelector('.copy-icon').outerHTML;
+        
+        // Show "Copied!" message
+        const message = currentLanguage === 'fa' ? 'کپی شد!' : 'Copied!';
+        button.innerHTML = message + ' ' + iconHtml;
+        
+        setTimeout(() => {
+          button.classList.remove('copied');
+          button.innerHTML = originalContent;
+        }, 2000);
+        
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        showToast(currentLanguage === 'fa' ? 'خطا در کپی کردن' : 'Failed to copy');
+      }
+    });
+  });
+
   // 🖼️ Image Gallery Carousel Functionality
   const galleryModal = document.getElementById("galleryModal");
   const galleryTrack = document.getElementById("galleryTrack");

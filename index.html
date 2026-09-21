@@ -63,6 +63,7 @@
     <symbol id="icon-envelope" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></symbol>
     <symbol id="icon-arrow-up" viewBox="0 0 384 512"><path d="M374.6 246.6C368.4 252.9 360.2 256 352 256s-16.38-3.125-22.62-9.375L224 141.3V448c0 17.69-14.33 31.1-31.1 31.1S160 465.7 160 448V141.3L54.63 246.6c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160C387.1 213.9 387.1 234.1 374.6 246.6z"/></symbol>
     <symbol id="icon-xmark" viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
   </svg>
   
   <header class="site-header" id="top">
@@ -236,10 +237,22 @@
         <h2 class="section-title" data-en="Contact" data-fa="تماس">Contact</h2>
         <p class="contact-subtitle" data-en="Let's build something meaningful together." data-fa="بیایید با هم چیزی ارزشمند بسازیم.">Let's build something meaningful together.</p>
 
-        <div class="contact-icons">
-          <a class="contact-icon" href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon icon-xl"><use href="#icon-github"></use></svg></a>
-          <a class="contact-icon" href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon icon-xl"><use href="#icon-linkedin"></use></svg></a>
-          <a class="contact-icon" href="mailto:o.a.exam8@gmail.com" aria-label="Email"><svg class="icon icon-xl"><use href="#icon-envelope"></use></svg></a>
+        <div class="contact-links-wrapper">
+          <div class="contact-link-row">
+            <a class="contact-icon" href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon icon-xl"><use href="#icon-github"></use></svg></a>
+            <button class="link-text copyable" data-copy="https://github.com/oaexam8-lgtm" aria-label="Copy GitHub link">
+              github.com/oaexam8-lgtm
+              <span class="copy-icon"><svg class="icon icon-sm"><use href="#icon-copy"></use></svg></span>
+            </button>
+          </div>
+          
+          <div class="contact-link-row">
+            <a class="contact-icon" href="mailto:o.a.exam8@gmail.com" aria-label="Email"><svg class="icon icon-xl"><use href="#icon-envelope"></use></svg></a>
+            <button class="link-text copyable" data-copy="o.a.exam8@gmail.com" aria-label="Copy email">
+              o.a.exam8@gmail.com
+              <span class="copy-icon"><svg class="icon icon-sm"><use href="#icon-copy"></use></svg></span>
+            </button>
+          </div>
         </div>
 
         <form id="contactForm" class="contact-form" novalidate>
@@ -266,14 +279,11 @@
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <p class="footer-logo" data-en="Omar Aghili" data-fa="عمر عقیلی">Omar Aghili</p>
-      <p data-en="© 2025 Omar Aghili. All rights reserved." data-fa="© ۱۴۰۴ عمر عقیلی. تمامی حقوق محفوظ است.">© 2025 Omar Aghili. All rights reserved.</p>
-      <div class="footer-socials">
-        <a href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon"><use href="#icon-github"></use></svg></a>
-        <a href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#icon-linkedin"></use></svg></a>
-        <a href="mailto:o.a.exam8@gmail.com" aria-label="Email"><svg class="icon"><use href="#icon-envelope"></use></svg></a>
-      </div>
-      <p data-en="Built with ❤️ using HTML, CSS & JS" data-fa="ساخته شده با ❤️ با HTML، CSS و JS">Built with ❤️ using HTML, CSS & JS</p>
+      <p class="footer-header" data-en="Design & Development by" data-fa="طراحی و توسعه توسط">طراحی و توسعه توسط</p>
+      <a href="https://github.com/oaexam8-lgtm" target="_blank" rel="noopener noreferrer" class="footer-brand" aria-label="AghiliDevCore GitHub">
+        <span data-en="AghiliDevCore" data-fa="AghiliDevCore">AghiliDevCore</span>
+        <svg class="icon"><use href="#icon-github"></use></svg>
+      </a>
     </div>
   </footer>
 

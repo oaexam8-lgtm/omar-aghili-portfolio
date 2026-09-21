@@ -1050,11 +1050,19 @@ main {
   color: var(--text-secondary);
 }
 
-.contact-icons {
+.contact-links-wrapper {
   display: flex;
-  justify-content: center;
-  gap: 0.8rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   margin: 1.2rem 0 2rem;
+}
+
+.contact-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .contact-icon {
@@ -1066,6 +1074,74 @@ main {
   color: var(--text-primary);
   text-decoration: none;
   font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.link-text {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklab, var(--bg-card) 40%, transparent);
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link-text.copyable {
+  cursor: pointer;
+  position: relative;
+}
+
+.copy-icon {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link-text.copyable:hover .copy-icon {
+  opacity: 1;
+}
+
+.link-text:hover {
+  background: color-mix(in oklab, var(--accent) 20%, transparent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  color: var(--accent);
+}
+
+.link-text.copied {
+  background: color-mix(in oklab, #22c55e 20%, transparent);
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.link-text.copied .copy-icon {
+  opacity: 1;
+}
+
+/* موبایل: استک عمودی و کوچکتر */
+@media (max-width: 480px) {
+  .link-text {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.9rem;
+    max-width: 220px;
+  }
+  
+  .contact-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.1rem;
+  }
 }
 
 .contact-form {
@@ -1126,8 +1202,9 @@ main {
   backdrop-filter: blur(20px) saturate(180%);
   border-top: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
   box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
-  padding: 2rem 0;
+  padding: 2.5rem 0 1.5rem;
   position: relative;
+  margin-top: 3rem;
 }
 
 .site-footer::before {
@@ -1145,22 +1222,49 @@ main {
 
 .footer-content {
   text-align: center;
-}
-
-.footer-logo {
-  font-weight: 700;
-}
-
-.footer-socials {
   display: flex;
-  gap: 0.8rem;
-  justify-content: center;
-  margin: 0.6rem 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
 }
 
-.footer-socials a {
-  color: var(--text-primary);
+.footer-header {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
 }
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  background: color-mix(in oklab, var(--bg-card) 50%, transparent);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.footer-brand:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: var(--gradient);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+.footer-brand .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive footer layout */
 
 /* 🚀 Glassmorphic Scroll to Top Button */
 .scroll-top-btn {
